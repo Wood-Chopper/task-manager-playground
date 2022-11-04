@@ -12,10 +12,7 @@ export class ListPickerComponent {
 
   lists$: Observable<TodoList[]>;
 
-  constructor(activatedRoute: ActivatedRoute, private todoListsStore: TodoListsStore) {
+  constructor(private todoListsStore: TodoListsStore) {
     this.lists$ = this.todoListsStore.list$;
-
-    let data = activatedRoute.snapshot.data;
-    this.todoListsStore.initialize(data['lists']||[]);
   }
 }
