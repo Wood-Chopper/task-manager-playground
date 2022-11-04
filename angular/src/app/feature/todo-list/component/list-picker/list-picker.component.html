@@ -1,9 +1,25 @@
 <h2>Select your list</h2>
 
-<ng-container *ngIf="(lists$ | async) as lists">
-  <ul class="list-group">
-    <ng-container *ngFor="let list of lists">
-      <li role="button" [routerLink]="['list', list.id]" class="list-group-item">{{list.name}}</li>
-    </ng-container>
-  </ul>
-</ng-container>
+<div class="row">
+  <div class="col-12 col-sm-6" *ngIf="(lists$ | async) as lists">
+    <ul class="list-group">
+      <ng-container *ngFor="let list of lists">
+        <li role="button" [routerLink]="['list', list.id]" class="list-group-item">
+          <span>{{list.name}}</span>
+          <button type="button" class="btn btn-danger" (click)="deleteList(list, $event)">x</button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <form class="form-check-inline">
+      <div class="form-group">
+        <input class="form-control" [(ngModel)]="newListName" name="listName" placeholder="Todo list name">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="createNewList()">Add</button>
+    </form>
+  </div>
+</div>

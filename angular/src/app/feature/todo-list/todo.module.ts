@@ -5,9 +5,10 @@ import {ListComponent} from "./component/list/list.component";
 import {ItemComponent} from "./component/list/item/item.component";
 import {TodoRoutingModule} from "./todo-routing.module";
 import { ListPickerComponent } from './component/list-picker/list-picker.component';
-import {TodoListsStore} from "../../store/todo-lists.store";
-import {TodoListClient} from "../../client/todo-list.client";
+import {TodoListsStore} from "./store/todo-lists.store";
+import {TodoListClient} from "./client/todo-list.client";
 import {Observable, tap} from "rxjs";
+import {FormsModule} from "@angular/forms";
 
 function initializeAppFactory(client: TodoListClient, store: TodoListsStore): () => Observable<any> {
   return () => client.getAllList().pipe(
@@ -24,7 +25,8 @@ function initializeAppFactory(client: TodoListClient, store: TodoListsStore): ()
   ],
   imports: [
     TodoRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     {

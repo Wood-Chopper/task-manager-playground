@@ -14,6 +14,14 @@ export class TodoListsStore extends AbstractStore<TodoList[]> {
   }
 
   initialize(initialLists: TodoList[]) {
-    this.update(_ => initialLists)
+    this.update(_ => initialLists);
+  }
+
+  createNewList(list: TodoList) {
+    this.update(state => [...state, list]);
+  }
+
+  remove(id: number) {
+    this.update(state => state.filter(list => list.id !== id));
   }
 }
