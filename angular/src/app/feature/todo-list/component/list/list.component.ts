@@ -1,4 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {TodoListsStore} from "../../../../store/todo-lists.store";
+import {Observable} from "rxjs";
 import {TodoList} from "../../../../model/types";
 
 @Component({
@@ -7,6 +10,11 @@ import {TodoList} from "../../../../model/types";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  @Input()
-  list!: TodoList;
+
+  list$: Observable<TodoList>;
+
+  constructor(activatedRoute: ActivatedRoute, private todoListsStore: TodoListsStore) {
+    const listId = activatedRoute.snapshot.data['listId'];
+    this.list$ = todoListsStore.select(state => state.find(lists => lists.id === listId) as TodoList);
+  }
 }

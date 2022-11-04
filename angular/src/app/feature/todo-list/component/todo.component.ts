@@ -5,17 +5,8 @@ import {TodoList} from "../../../model/types";
 import {Observable} from "rxjs";
 
 @Component({
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  templateUrl: './todo.component.html'
 })
-export class TodoComponent {
+export class TodoListFeatureComponent {
 
-  lists$: Observable<TodoList[]>;
-
-  constructor(private activatedRoute: ActivatedRoute, private todoListsStore: TodoListsStore) {
-    this.lists$ = this.todoListsStore.list$;
-
-    let data = this.activatedRoute.snapshot.data;
-    this.todoListsStore.initialize(data['lists']||[]);
-  }
 }

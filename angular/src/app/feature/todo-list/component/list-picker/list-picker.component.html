@@ -1,0 +1,9 @@
+<h2>Select your list</h2>
+
+<ng-container *ngIf="(lists$ | async) as lists">
+  <ul class="list-group">
+    <ng-container *ngFor="let list of lists">
+      <li role="button" [routerLink]="['list', list.id]" class="list-group-item">{{list.name}}</li>
+    </ng-container>
+  </ul>
+</ng-container>

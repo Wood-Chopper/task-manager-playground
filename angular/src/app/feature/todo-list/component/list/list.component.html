@@ -1,5 +1,11 @@
-{{ list.name }}
-
-<ng-container *ngFor="let item of list.items">
-  <app-item [item]="item"></app-item>
+<ng-container *ngIf="(list$ | async) as list">
+  <h2>{{list.name}}</h2>
+  <ul class="list-group">
+    <ng-container *ngFor="let item of list.items">
+      <li class="list-group-item">
+        <app-item [item]="item"></app-item>
+      </li>
+    </ng-container>
+  </ul>
 </ng-container>
+
