@@ -17,6 +17,7 @@ export class TodoListClient {
     return this.httpClient.get<TodoList[]>('api/lists');
   }
 
+  @Mapping({ sourceTarget: 'items', transform: (items: Item[]) => items||[] })
   createList(name: string): Observable<TodoList> {
     return this.httpClient.post<TodoList>('api/lists', {
       name: name
