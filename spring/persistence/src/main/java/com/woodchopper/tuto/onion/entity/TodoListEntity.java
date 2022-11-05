@@ -16,7 +16,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "TodoList")
+@Table(name = "TODOLIST")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

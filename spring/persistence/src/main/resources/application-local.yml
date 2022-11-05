@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:./mem-db
     driver-class-name: org.h2.Driver
     username: sa
     password: password
@@ -9,7 +9,11 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto: create-drop
+      ddl-auto: update
   h2:
     console:
       enabled: true
+  sql:
+    init:
+      mode: embedded
+      platform: h2
