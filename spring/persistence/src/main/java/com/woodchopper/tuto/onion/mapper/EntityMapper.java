@@ -14,9 +14,12 @@ public interface EntityMapper {
     EntityMapper INSTANCE = Mappers.getMapper(EntityMapper.class);
 
     TodoListEntity toEntity(TodoList todoList);
+
     TodoList toModel(TodoListEntity todoListEntity);
+
     List<TodoList> toModel(List<TodoListEntity> todoListEntities);
 
     ItemEntity toEntity(Item item);
+
     Item toModel(ItemEntity itemEntity);
 }

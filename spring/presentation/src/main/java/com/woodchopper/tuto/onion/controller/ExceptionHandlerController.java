@@ -10,5 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionHandlerController {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void todoListNotFound(ListNotFoundException exception) {}
+    public void todoListNotFound(ListNotFoundException exception) {
+    }
 }

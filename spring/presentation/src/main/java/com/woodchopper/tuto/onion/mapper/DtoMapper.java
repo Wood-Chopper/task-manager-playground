@@ -15,9 +15,12 @@ public interface DtoMapper {
     DtoMapper INSTANCE = Mappers.getMapper(DtoMapper.class);
 
     TodoList toModel(TodoListDto todoListDto);
+
     TodoListDto toDto(TodoList todoList);
+
     List<TodoListDto> toDto(List<TodoList> todoLists);
 
     Item toModel(ItemDto itemDto);
+
     ItemDto toDto(Item item);
 }
