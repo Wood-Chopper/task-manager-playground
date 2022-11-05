@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring/app/app.iml" filepath="$PROJECT_DIR$/spring/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring/domain/domain.iml" filepath="$PROJECT_DIR$/spring/domain/domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring/persistence/persistence.iml" filepath="$PROJECT_DIR$/spring/persistence/persistence.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring/api/presentation.iml" filepath="$PROJECT_DIR$/spring/api/presentation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/presentation/presentation.iml" filepath="$PROJECT_DIR$/spring/presentation/presentation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring/todo-list-base.iml" filepath="$PROJECT_DIR$/spring/todo-list-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/todo-list-template.iml" filepath="$PROJECT_DIR$/.idea/todo-list-template.iml" />
     </modules>
