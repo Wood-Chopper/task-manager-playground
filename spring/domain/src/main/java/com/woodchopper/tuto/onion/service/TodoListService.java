@@ -31,6 +31,6 @@ public class TodoListService {
 
     public Item addItem(Long id, Item item) {
         item.setCreationDate(LocalDateTime.now());
-        return addItem(id, item);
+        return persistenceGateway.addItem(id, item);
     }
 }
