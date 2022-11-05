@@ -1,5 +1,5 @@
 import {AbstractStore} from "./abstract.store";
-import {TodoList} from "../model/types";
+import {Item, TodoList} from "../model/types";
 import {Injectable} from "@angular/core";
 
 @Injectable({
@@ -13,15 +13,22 @@ export class TodoListsStore extends AbstractStore<TodoList[]> {
     super([]);
   }
 
-  initialize(initialLists: TodoList[]) {
+  initialize(initialLists: TodoList[]): void {
     this.update(_ => initialLists);
   }
 
-  createNewList(list: TodoList) {
+  createNewList(list: TodoList): void {
     this.update(state => [...state, list]);
   }
 
-  remove(id: number) {
+  remove(id: number): void {
     this.update(state => state.filter(list => list.id !== id));
+  }
+
+  addItem(listId: number, newItem: Item): void {
+    this.update(state => state.map(list => list.id !== listId ? list : {
+      ...list,
+      items: [...list.items, newItem]
+    }))
   }
 }

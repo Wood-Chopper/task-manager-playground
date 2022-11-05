@@ -18,4 +18,9 @@ export class TodoListAction {
     this.todoListClient.delete(id)
       .subscribe(() => this.todoListStore.remove(id))
   }
+
+  addItem(listId: number, name: string): void {
+    this.todoListClient.addItem(listId, name)
+      .subscribe(newItem => this.todoListStore.addItem(listId, newItem))
+  }
 }

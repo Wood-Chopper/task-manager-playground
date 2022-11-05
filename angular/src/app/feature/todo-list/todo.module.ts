@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 
 function initializeAppFactory(client: TodoListClient, store: TodoListsStore): () => Observable<any> {
   return () => client.getAllList().pipe(
+    tap(v => console.log(v)),
     tap(lists => store.initialize(lists))
   );
 }

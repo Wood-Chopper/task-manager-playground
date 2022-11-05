@@ -1,11 +1,24 @@
 <ng-container *ngIf="(list$ | async) as list">
-  <h2>{{list.name}}</h2>
-  <ul class="list-group">
-    <ng-container *ngFor="let item of list.items">
-      <li class="list-group-item">
-        <app-item [item]="item"></app-item>
-      </li>
-    </ng-container>
-  </ul>
+  <div class="col-12">
+    <h2>{{list.name}}</h2>
+    <ul class="list-group">
+      <ng-container *ngFor="let item of list.items">
+        <li class="list-group-item">
+          <app-item [item]="item"></app-item>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <form class="form-check-inline">
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="newItemName" name="itemName" placeholder="Item name">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="createNewItem(list.id)">Add</button>
+      </form>
+    </div>
+  </div>
 </ng-container>
 
