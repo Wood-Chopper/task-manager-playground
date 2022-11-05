@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.woodchopper.tuto.onion</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>presentation</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
