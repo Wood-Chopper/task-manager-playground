@@ -19,9 +19,7 @@ export class TodoListClient {
 
   createList(name: string): Observable<TodoList> {
     return this.httpClient.post<TodoList>('api/lists', {
-      name: name,
-      items: [],
-      creationDate: new Date()
+      name: name
     });
   }
 
@@ -31,8 +29,7 @@ export class TodoListClient {
 
   addItem(listId: number, name: string): Observable<Item> {
     return this.httpClient.post<Item>(`api/lists/${listId}/items`, {
-      name: name,
-      creationDate: new Date()
+      name: name
     })
   }
 }
