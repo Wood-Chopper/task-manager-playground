@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import {Observable} from 'rxjs';
-import {TodoList} from "../model/types";
+import {TodoList} from "../model/todo-list";
 import {TodoListClient} from "../client/todo-list.client";
 
 @Injectable({

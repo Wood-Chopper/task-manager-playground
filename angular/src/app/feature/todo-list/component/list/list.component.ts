@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
-import {TodoList} from "../../model/types";
+import {TodoList} from "../../model/todo-list";
 import {TodoListFacade} from "../../facade/todo-list.facade";
 
 @Component({

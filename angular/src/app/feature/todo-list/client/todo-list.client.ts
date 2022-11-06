@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Item, TodoList} from "../model/types";
+import {Item, TodoList} from "../model/todo-list";
 import {DateMapping, Mapping} from "@woodchopper/property-mapper";
 
 @Injectable({

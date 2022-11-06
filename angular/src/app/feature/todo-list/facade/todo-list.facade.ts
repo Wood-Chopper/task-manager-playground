@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {TodoListClient} from "../client/todo-list.client";
 import {TodoListsStore} from "../store/todo-lists.store";
-import {TodoList} from "../model/types";
+import {TodoList} from "../model/todo-list";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class TodoListFacade {
       .subscribe(newItem => this.todoListStore.addItem(listId, newItem))
   }
 
-  sort(listId: number) {
+  sort(listId: number): void {
     this.todoListClient.sort(listId)
       .subscribe(items => this.todoListStore.setItems(listId, items))
   }

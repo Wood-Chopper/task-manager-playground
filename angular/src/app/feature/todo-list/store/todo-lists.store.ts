@@ -1,5 +1,5 @@
 import {AbstractStore} from "./abstract.store";
-import {Item, TodoList} from "../model/types";
+import {Item, TodoList} from "../model/todo-list";
 import {Injectable} from "@angular/core";
 
 @Injectable({
