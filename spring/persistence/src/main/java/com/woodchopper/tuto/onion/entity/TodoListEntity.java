@@ -27,7 +27,7 @@ public class TodoListEntity {
 
     private String name;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "todoListEntity")
     List<ItemEntity> items;
 
     private LocalDateTime creationDate;

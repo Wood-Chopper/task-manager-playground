@@ -10,15 +10,16 @@
     </ul>
   </div>
 
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <form class="form-check-inline">
-        <div class="form-group">
-          <input class="form-control" [(ngModel)]="newItemName" name="itemName" placeholder="Item name">
-        </div>
+  <form>
+    <div class="row mt-3">
+      <div class="col-8">
+        <input class="form-control" [(ngModel)]="newItemName" name="listName" placeholder="Item name">
+      </div>
+      <div class="col">
         <button type="submit" class="btn btn-primary" (click)="createNewItem(list.id)">Add</button>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
+
 </ng-container>
 
