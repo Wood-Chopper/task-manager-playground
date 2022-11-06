@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import {TodoListClient} from "../client/todo-list.client";
 import {TodoListsStore} from "../store/todo-lists.store";
+import {TodoList} from "../model/types";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoListAction {
+export class TodoListFacade {
+
+  todoLists$ = this.todoListStore.select(lists => lists);
+
+  todoList$ = (listId: number) =>
+    this.todoListStore.select(state => state.find(lists => lists.id === listId) as TodoList);
 
   constructor(private todoListClient: TodoListClient, private todoListStore: TodoListsStore) {}
 

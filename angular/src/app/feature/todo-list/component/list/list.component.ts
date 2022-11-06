@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
 import {TodoList} from "../../model/types";
-import {TodoListSelector} from "../../core/todo-list.selector";
-import {TodoListAction} from "../../core/todo-list.action";
+import {TodoListFacade} from "../../facade/todo-list.facade";
 
 @Component({
   selector: 'app-list',
@@ -16,18 +15,17 @@ export class ListComponent {
   newItemName = '';
 
   constructor(activatedRoute: ActivatedRoute,
-              private todoListSelector: TodoListSelector,
-              private todoListAction: TodoListAction) {
+              private todoListFacade: TodoListFacade) {
     const listId = activatedRoute.snapshot.data['listId'];
-    this.list$ = todoListSelector.selectList(listId);
+    this.list$ = todoListFacade.todoList$(listId);
   }
 
   createNewItem(listId: number): void {
-    this.todoListAction.addItem(listId, this.newItemName);
+    this.todoListFacade.addItem(listId, this.newItemName);
     this.newItemName = '';
   }
 
   sort(listId: number): void {
-    this.todoListAction.sort(listId);
+    this.todoListFacade.sort(listId);
   }
 }

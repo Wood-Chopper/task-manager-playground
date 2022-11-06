@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
 import {TodoList} from "../../model/types";
-import {TodoListAction} from "../../core/todo-list.action";
-import {TodoListSelector} from "../../core/todo-list.selector";
+import {TodoListFacade} from "../../facade/todo-list.facade";
 
 @Component({
   selector: 'app-list-picker',
@@ -14,17 +13,17 @@ export class ListPickerComponent {
 
   newListName = '';
 
-  constructor(private todoListSelector: TodoListSelector, private todoListAction: TodoListAction) {
-    this.lists$ = this.todoListSelector.list$;
+  constructor(private todoListFacade: TodoListFacade) {
+    this.lists$ = this.todoListFacade.todoLists$;
   }
 
   createNewList(): void {
-    this.todoListAction.createNewList(this.newListName);
+    this.todoListFacade.createNewList(this.newListName);
     this.newListName = '';
   }
 
   deleteList(list: TodoList, event: MouseEvent): void {
     event.stopPropagation();
-    this.todoListAction.removeList(list.id);
+    this.todoListFacade.removeList(list.id);
   }
 }
