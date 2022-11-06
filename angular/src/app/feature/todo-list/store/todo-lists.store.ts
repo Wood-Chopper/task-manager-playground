@@ -31,4 +31,11 @@ export class TodoListsStore extends AbstractStore<TodoList[]> {
       items: [...list.items, newItem]
     }))
   }
+
+  setItems(listId: number, items: Item[]): void {
+    this.update(state => state.map(list => list.id !== listId ? list : {
+      ...list,
+      items: items
+    }))
+  }
 }

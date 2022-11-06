@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface PersistenceGateway {
     List<TodoList> getLists();
 
-    TodoList addList(TodoList todoListDto);
+    TodoList saveList(TodoList todoListDto);
 
     Optional<TodoList> getList(Long id);
 

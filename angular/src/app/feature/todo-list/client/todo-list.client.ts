@@ -33,4 +33,9 @@ export class TodoListClient {
       name: name
     })
   }
+
+  @DateMapping('creationDate')
+  sort(listId: number): Observable<Item[]> {
+    return this.httpClient.get<Item[]>(`api/lists/${listId}/sort`)
+  }
 }

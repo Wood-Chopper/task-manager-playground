@@ -23,4 +23,9 @@ export class TodoListAction {
     this.todoListClient.addItem(listId, name)
       .subscribe(newItem => this.todoListStore.addItem(listId, newItem))
   }
+
+  sort(listId: number) {
+    this.todoListClient.sort(listId)
+      .subscribe(items => this.todoListStore.setItems(listId, items))
+  }
 }

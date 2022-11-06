@@ -44,5 +44,8 @@ public class TodoListController {
         return todoListFacade.addItem(id, itemDto);
     }
 
-    //sort feature
+    @GetMapping("{id}/sort")
+    public List<ItemDto> sort(@PathVariable Long id) {
+        return todoListFacade.sort(id);
+    }
 }

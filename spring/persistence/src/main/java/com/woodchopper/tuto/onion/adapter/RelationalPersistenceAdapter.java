@@ -30,7 +30,7 @@ public class RelationalPersistenceAdapter implements PersistenceGateway {
     }
 
     @Override
-    public TodoList addList(TodoList todoList) {
+    public TodoList saveList(TodoList todoList) {
         TodoListEntity todoListEntity = entityMapper.toEntity(todoList);
         TodoListEntity savedTodoListEntity = todoListRepository.save(todoListEntity);
         return entityMapper.toModel(savedTodoListEntity);

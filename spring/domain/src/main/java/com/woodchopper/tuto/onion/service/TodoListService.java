@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -22,7 +23,7 @@ public class TodoListService {
 
     public TodoList addList(TodoList todoList) {
         todoList.setCreationDate(LocalDateTime.now());
-        return persistenceGateway.addList(todoList);
+        return persistenceGateway.saveList(todoList);
     }
 
     public TodoList getList(Long id) {
@@ -32,5 +33,21 @@ public class TodoListService {
     public Item addItem(Long id, Item item) {
         item.setCreationDate(LocalDateTime.now());
         return persistenceGateway.addItem(id, item);
+    }
+
+    public List<Item> sortByName(Long id) {
+        TodoList todoList = persistenceGateway.getList(id).orElseThrow(ListNotFoundException::new);
+        //Sort
+        todoList.getItems().sort(Comparator.comparing(Item::getName));
+        //Set order
+        long index = 0;
+        for (Item item : todoList.getItems()) {
+            item.setOrder(index);
+            index++;
+        }
+        //Save in persistence
+        persistenceGateway.saveList(todoList);
+
+        return todoList.getItems();
     }
 }

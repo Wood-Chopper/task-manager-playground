@@ -26,4 +26,8 @@ export class ListComponent {
     this.todoListAction.addItem(listId, this.newItemName);
     this.newItemName = '';
   }
+
+  sort(listId: number): void {
+    this.todoListAction.sort(listId);
+  }
 }

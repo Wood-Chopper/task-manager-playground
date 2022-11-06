@@ -19,23 +19,28 @@ public class TodoListFacade {
 
     public List<TodoListDto> getLists() {
         List<TodoList> todoLists = todoListService.getLists();
-        return dtoMapper.toDto(todoLists);
+        return dtoMapper.todoListToDto(todoLists);
     }
 
     public TodoListDto addList(TodoListDto todoListDto) {
-        TodoList todoList = dtoMapper.toModel(todoListDto);
+        TodoList todoList = dtoMapper.todoListToModel(todoListDto);
         TodoList savedTodoList = todoListService.addList(todoList);
-        return dtoMapper.toDto(savedTodoList);
+        return dtoMapper.todoListToDto(savedTodoList);
     }
 
     public TodoListDto getList(Long id) {
         TodoList todoList = todoListService.getList(id);
-        return dtoMapper.toDto(todoList);
+        return dtoMapper.todoListToDto(todoList);
     }
 
     public ItemDto addItem(Long id, ItemDto itemDto) {
-        Item item = dtoMapper.toModel(itemDto);
+        Item item = dtoMapper.itemToModel(itemDto);
         Item savedItem = todoListService.addItem(id, item);
-        return dtoMapper.toDto(savedItem);
+        return dtoMapper.itemToDto(savedItem);
+    }
+
+    public List<ItemDto> sort(Long id) {
+        List<Item> items = todoListService.sortByName(id);
+        return dtoMapper.itemToDto(items);
     }
 }
