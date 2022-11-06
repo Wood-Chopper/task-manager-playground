@@ -1,6 +1,6 @@
 import {BehaviorSubject, distinctUntilChanged, map, Observable} from "rxjs";
 
-export class AbstractStore<T> {
+export class Store<T> {
 
   private state$: BehaviorSubject<T>;
 

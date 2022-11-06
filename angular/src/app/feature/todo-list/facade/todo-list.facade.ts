@@ -6,12 +6,14 @@ import {TodoList} from "../model/todo-list";
 @Injectable({
   providedIn: 'root'
 })
+//Pas une facade mais un service. Ou alors, facade + service (need use case)
+// Supprimer listes vide avec "êtes vous sûr ?"
+// Sync
+//On oublie le concept d'effects avec cette architecture
 export class TodoListFacade {
 
-  todoLists$ = this.todoListStore.select(lists => lists);
-
-  todoList$ = (listId: number) =>
-    this.todoListStore.select(state => state.find(lists => lists.id === listId) as TodoList);
+  todoLists$ = this.todoListStore.todoLists$;
+  todoList$ = (listId: number) => this.todoListStore.todoList$(listId);
 
   constructor(private todoListClient: TodoListClient, private todoListStore: TodoListsStore) {}
 
@@ -33,5 +35,10 @@ export class TodoListFacade {
   sort(listId: number): void {
     this.todoListClient.sort(listId)
       .subscribe(items => this.todoListStore.setItems(listId, items))
+  }
+
+  sync(): void {
+    this.todoListClient.getAllList()
+      .subscribe(lists => this.todoListStore.initialize(lists))
   }
 }

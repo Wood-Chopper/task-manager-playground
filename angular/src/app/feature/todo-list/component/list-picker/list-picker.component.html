@@ -1,6 +1,9 @@
 <h2>Select your list or create one</h2>
 
 <div class="row">
+  <div class="col-12">
+    <button class="btn btn-success" (click)="sync()">Sync</button>
+  </div>
   <div class="col-12" *ngIf="(lists$ | async) as lists">
     <ul class="list-group">
       <ng-container *ngFor="let list of lists">

@@ -26,4 +26,8 @@ export class ListPickerComponent {
     event.stopPropagation();
     this.todoListFacade.removeList(list.id);
   }
+
+  sync(): void {
+    this.todoListFacade.sync();
+  }
 }

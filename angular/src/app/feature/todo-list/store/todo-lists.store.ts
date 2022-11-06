@@ -1,39 +1,39 @@
-import {AbstractStore} from "./abstract.store";
+import {Store} from "./store";
 import {Item, TodoList} from "../model/todo-list";
 import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoListsStore extends AbstractStore<TodoList[]> {
+export class TodoListsStore {
 
-  list$ = this.select(lists => lists)
+  store = new Store<TodoList[]>([]);
 
-  constructor() {
-    super([]);
-  }
+  todoLists$ = this.store.select(lists => lists);
+  todoList$ = (listId: number) =>
+    this.store.select(state => state.find(lists => lists.id === listId) as TodoList);
 
   initialize(initialLists: TodoList[]): void {
-    this.update(_ => initialLists);
+    this.store.update(_ => initialLists);
   }
 
   createNewList(list: TodoList): void {
-    this.update(state => [...state, list]);
+    this.store.update(state => [...state, list]);
   }
 
   remove(id: number): void {
-    this.update(state => state.filter(list => list.id !== id));
+    this.store.update(state => state.filter(list => list.id !== id));
   }
 
   addItem(listId: number, newItem: Item): void {
-    this.update(state => state.map(list => list.id !== listId ? list : {
+    this.store.update(state => state.map(list => list.id !== listId ? list : {
       ...list,
       items: [...list.items, newItem]
     }))
   }
 
   setItems(listId: number, items: Item[]): void {
-    this.update(state => state.map(list => list.id !== listId ? list : {
+    this.store.update(state => state.map(list => list.id !== listId ? list : {
       ...list,
       items: items
     }))
