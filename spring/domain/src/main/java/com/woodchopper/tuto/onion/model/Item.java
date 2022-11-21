@@ -14,4 +14,5 @@ public class Item {
     private String name;
     private LocalDateTime creationDate;
     private Long order;
+    private boolean checked;
 }

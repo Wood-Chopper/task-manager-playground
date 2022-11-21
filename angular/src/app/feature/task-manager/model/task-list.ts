@@ -2,6 +2,7 @@ export type Item = {
   id: number
   name: string
   creationDate: Date
+  checked: boolean
 }
 
 export type TaskList = {

@@ -31,4 +31,5 @@ public class ItemEntity {
     private String creationDate;
     @Column(name = "MYORDER")
     private Long order;
+    private boolean checked;
 }

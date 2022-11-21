@@ -43,4 +43,10 @@ public class TaskListFacade {
         List<Item> items = taskListService.sortByName(id);
         return dtoMapper.itemToDto(items);
     }
+
+    public ItemDto patch(Long listId, Long itemId, ItemDto itemPatchDto) {
+        Item itemPatch = dtoMapper.itemToModel(itemPatchDto);
+        Item patchedItem = taskListService.patch(listId, itemId, itemPatch);
+        return dtoMapper.itemToDto(patchedItem);
+    }
 }

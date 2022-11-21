@@ -16,6 +16,7 @@ import java.util.List;
 public class TaskListService {
 
     private final PersistenceGateway persistenceGateway;
+    private final PatchItemService patchItemService = PatchItemService.INSTANCE;
 
     public List<TaskListList> getLists() {
         return persistenceGateway.getLists();
@@ -32,7 +33,7 @@ public class TaskListService {
 
     public Item addItem(Long id, Item item) {
         item.setCreationDate(LocalDateTime.now());
-        return persistenceGateway.addItem(id, item);
+        return persistenceGateway.saveItem(id, item);
     }
 
     public List<Item> sortByName(Long id) {
@@ -49,5 +50,11 @@ public class TaskListService {
         persistenceGateway.saveList(taskListList);
 
         return taskListList.getItems();
+    }
+
+    public Item patch(Long listId, Long itemId, Item itemPatch) {
+        Item sourceItem = persistenceGateway.getItem(listId, itemId);
+        Item patchedItem = patchItemService.patchItem(sourceItem, itemPatch);
+        return persistenceGateway.saveItem(listId, patchedItem);
     }
 }

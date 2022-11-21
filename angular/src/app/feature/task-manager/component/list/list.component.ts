@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
-import {TaskList} from "../../model/task-list";
+import {Item, TaskList} from "../../model/task-list";
 import {TaskManagerService} from "../../service/task-manager.service";
 
 @Component({
@@ -27,5 +27,9 @@ export class ListComponent {
 
   sort(listId: number): void {
     this.taskManagerService.sort(listId);
+  }
+
+  switch(listId: number, itemId: number, value: boolean) {
+    this.taskManagerService.switch(listId, itemId, value);
   }
 }

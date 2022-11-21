@@ -11,6 +11,7 @@ create table ITEM
     NAME         VARCHAR(500) not null,
     CREATIONDATE TIMESTAMP    not null,
     MYORDER        BIGINT null,
+    CHECKED      BOOLEAN default false,
     FK_TASKLIST  BIGINT       not null,
     FOREIGN KEY (FK_TASKLIST) REFERENCES TASKLIST(ID)
 )

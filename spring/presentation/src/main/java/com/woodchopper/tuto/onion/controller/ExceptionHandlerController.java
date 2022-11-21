@@ -1,5 +1,6 @@
 package com.woodchopper.tuto.onion.controller;
 
+import com.woodchopper.tuto.onion.exception.ItemNotFoundException;
 import com.woodchopper.tuto.onion.exception.ListNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,5 +12,9 @@ public class ExceptionHandlerController {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void taskListNotFound(ListNotFoundException exception) {
+    }
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void taskListNotFound(ItemNotFoundException exception) {
     }
 }

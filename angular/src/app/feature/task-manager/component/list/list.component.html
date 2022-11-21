@@ -6,7 +6,11 @@
   <div class="col-12">
     <ul class="list-group">
       <ng-container *ngFor="let item of list.items">
-        <li class="list-group-item">
+        <li class="list-group-item d-inline-flex">
+          <div class="checkbox">
+            {{ item.checked }}
+            <input type="checkbox" [ngModel]="item.checked" (ngModelChange)="switch(list.id, item.id, !item.checked)"/>
+          </div>
           <app-item [item]="item"></app-item>
         </li>
       </ng-container>

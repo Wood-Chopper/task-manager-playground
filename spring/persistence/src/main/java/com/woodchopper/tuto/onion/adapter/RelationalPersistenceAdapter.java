@@ -2,6 +2,7 @@ package com.woodchopper.tuto.onion.adapter;
 
 import com.woodchopper.tuto.onion.entity.ItemEntity;
 import com.woodchopper.tuto.onion.entity.TaskListEntity;
+import com.woodchopper.tuto.onion.exception.ItemNotFoundException;
 import com.woodchopper.tuto.onion.exception.ListNotFoundException;
 import com.woodchopper.tuto.onion.gateway.PersistenceGateway;
 import com.woodchopper.tuto.onion.mapper.EntityMapper;
@@ -43,13 +44,20 @@ public class RelationalPersistenceAdapter implements PersistenceGateway {
     }
 
     @Override
-    public Item addItem(Long id, Item item) {
+    public Item saveItem(Long id, Item item) {
         ItemEntity itemEntity = entityMapper.toEntity(item);
 
         TaskListEntity taskListEntity = taskListRepository.findById(id).orElseThrow(ListNotFoundException::new);
         itemEntity.setTaskList(taskListEntity);
 
         ItemEntity savedItemEntity = itemRepository.save(itemEntity);
+
         return entityMapper.toModel(savedItemEntity);
+    }
+
+    @Override
+    public Item getItem(Long listId, Long itemId) {
+        ItemEntity itemEntity = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+        return entityMapper.toModel(itemEntity);
     }
 }

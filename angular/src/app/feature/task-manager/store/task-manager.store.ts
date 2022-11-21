@@ -38,4 +38,14 @@ export class TaskManagerStore {
       items: items
     }))
   }
+
+  patchItem(listId: number, itemId: number, patch: Partial<Item>) {
+    this.store.update(state => state.map(list => list.id !== listId ? list : {
+      ...list,
+      items: list.items.map(item => item.id !== itemId ? item : {
+        ...item,
+        ...patch
+      })
+    }))
+  }
 }

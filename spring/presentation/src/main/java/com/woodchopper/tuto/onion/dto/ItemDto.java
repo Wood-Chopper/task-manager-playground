@@ -11,4 +11,5 @@ public class ItemDto {
     private Long id;
     private String name;
     private String creationDate;
+    private boolean checked;
 }

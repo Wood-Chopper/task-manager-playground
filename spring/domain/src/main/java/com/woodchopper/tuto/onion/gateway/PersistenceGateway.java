@@ -13,5 +13,7 @@ public interface PersistenceGateway {
 
     Optional<TaskListList> getList(Long id);
 
-    Item addItem(Long id, Item item);
+    Item saveItem(Long id, Item item);
+
+    Item getItem(Long listId, Long itemId);
 }

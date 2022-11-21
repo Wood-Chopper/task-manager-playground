@@ -38,4 +38,10 @@ export class TaskManagerClient {
   sort(listId: number): Observable<Item[]> {
     return this.httpClient.get<Item[]>(`api/lists/${listId}/sort`)
   }
+
+  switch(listId: number, itemId: number, value: boolean): Observable<Item> {
+    return this.httpClient.patch<Item>(`api/lists/${listId}/items/${itemId}`, {
+      checked: value
+    })
+  }
 }
