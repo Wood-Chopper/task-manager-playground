@@ -1,17 +1,17 @@
 package com.woodchopper.tuto.onion.gateway;
 
 import com.woodchopper.tuto.onion.model.Item;
-import com.woodchopper.tuto.onion.model.TodoList;
+import com.woodchopper.tuto.onion.model.TaskListList;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PersistenceGateway {
-    List<TodoList> getLists();
+    List<TaskListList> getLists();
 
-    TodoList saveList(TodoList todoListDto);
+    TaskListList saveList(TaskListList taskListListDto);
 
-    Optional<TodoList> getList(Long id);
+    Optional<TaskListList> getList(Long id);
 
     Item addItem(Long id, Item item);
 }

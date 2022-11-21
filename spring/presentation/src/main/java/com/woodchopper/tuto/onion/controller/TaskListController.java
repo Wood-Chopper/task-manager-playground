@@ -1,8 +1,8 @@
 package com.woodchopper.tuto.onion.controller;
 
 import com.woodchopper.tuto.onion.dto.ItemDto;
-import com.woodchopper.tuto.onion.dto.TodoListDto;
-import com.woodchopper.tuto.onion.facade.TodoListFacade;
+import com.woodchopper.tuto.onion.dto.TaskListDto;
+import com.woodchopper.tuto.onion.facade.TaskListFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,34 +18,34 @@ import java.util.List;
 @RestController
 @RequestMapping("lists")
 @RequiredArgsConstructor
-public class TodoListController {
+public class TaskListController {
 
-    private final TodoListFacade todoListFacade;
+    private final TaskListFacade taskListFacade;
 
     @GetMapping
-    public List<TodoListDto> getLists() {
-        return todoListFacade.getLists();
+    public List<TaskListDto> getLists() {
+        return taskListFacade.getLists();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TodoListDto addList(@RequestBody TodoListDto todoListDto) {
-        return todoListFacade.addList(todoListDto);
+    public TaskListDto addList(@RequestBody TaskListDto taskListDto) {
+        return taskListFacade.addList(taskListDto);
     }
 
     @GetMapping("{id}")
-    public TodoListDto getList(@PathVariable Long id) {
-        return todoListFacade.getList(id);
+    public TaskListDto getList(@PathVariable Long id) {
+        return taskListFacade.getList(id);
     }
 
     @PostMapping("{id}/items")
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDto addItem(@PathVariable Long id, @RequestBody ItemDto itemDto) {
-        return todoListFacade.addItem(id, itemDto);
+        return taskListFacade.addItem(id, itemDto);
     }
 
     @GetMapping("{id}/sort")
     public List<ItemDto> sort(@PathVariable Long id) {
-        return todoListFacade.sort(id);
+        return taskListFacade.sort(id);
     }
 }

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
-import {TodoList} from "../../model/todo-list";
-import {TodoListService} from "../../service/todo-list.service";
+import {TaskList} from "../../model/task-list";
+import {TaskManagerService} from "../../service/task-manager.service";
 
 @Component({
   selector: 'app-list',
@@ -11,21 +11,21 @@ import {TodoListService} from "../../service/todo-list.service";
 })
 export class ListComponent {
 
-  list$: Observable<TodoList>;
+  list$: Observable<TaskList>;
   newItemName = '';
 
   constructor(activatedRoute: ActivatedRoute,
-              private todoListService: TodoListService) {
+              private taskManagerService: TaskManagerService) {
     const listId = activatedRoute.snapshot.data['listId'];
-    this.list$ = todoListService.todoList$(listId);
+    this.list$ = taskManagerService.taskList$(listId);
   }
 
   createNewItem(listId: number): void {
-    this.todoListService.addItem(listId, this.newItemName);
+    this.taskManagerService.addItem(listId, this.newItemName);
     this.newItemName = '';
   }
 
   sort(listId: number): void {
-    this.todoListService.sort(listId);
+    this.taskManagerService.sort(listId);
   }
 }

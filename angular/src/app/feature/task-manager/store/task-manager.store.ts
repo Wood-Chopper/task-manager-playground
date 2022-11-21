@@ -1,23 +1,23 @@
 import {Store} from "./store";
-import {Item, TodoList} from "../model/todo-list";
+import {Item, TaskList} from "../model/task-list";
 import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoListsStore {
+export class TaskManagerStore {
 
-  store = new Store<TodoList[]>([]);
+  store = new Store<TaskList[]>([]);
 
-  todoLists$ = this.store.select(lists => lists);
-  todoList$ = (listId: number) =>
-    this.store.select(state => state.find(lists => lists.id === listId) as TodoList);
+  taskLists$ = this.store.select(lists => lists);
+  taskList$ = (listId: number) =>
+    this.store.select(state => state.find(lists => lists.id === listId) as TaskList);
 
-  initialize(initialLists: TodoList[]): void {
+  initialize(initialLists: TaskList[]): void {
     this.store.update(_ => initialLists);
   }
 
-  createNewList(list: TodoList): void {
+  createNewList(list: TaskList): void {
     this.store.update(state => [...state, list]);
   }
 

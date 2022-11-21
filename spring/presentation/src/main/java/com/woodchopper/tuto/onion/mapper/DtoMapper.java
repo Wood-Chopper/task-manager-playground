@@ -1,9 +1,9 @@
 package com.woodchopper.tuto.onion.mapper;
 
 import com.woodchopper.tuto.onion.dto.ItemDto;
-import com.woodchopper.tuto.onion.dto.TodoListDto;
+import com.woodchopper.tuto.onion.dto.TaskListDto;
 import com.woodchopper.tuto.onion.model.Item;
-import com.woodchopper.tuto.onion.model.TodoList;
+import com.woodchopper.tuto.onion.model.TaskListList;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,11 +14,11 @@ public interface DtoMapper {
 
     DtoMapper INSTANCE = Mappers.getMapper(DtoMapper.class);
 
-    TodoList todoListToModel(TodoListDto todoListDto);
+    TaskListList taskListToModel(TaskListDto taskListDto);
 
-    TodoListDto todoListToDto(TodoList todoList);
+    TaskListDto taskListToDto(TaskListList taskListList);
 
-    List<TodoListDto> todoListToDto(List<TodoList> todoLists);
+    List<TaskListDto> taskListToDto(List<TaskListList> taskListLists);
 
     Item itemToModel(ItemDto itemDto);
 

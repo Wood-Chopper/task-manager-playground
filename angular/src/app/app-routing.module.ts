@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'todo',
-    loadChildren: () => import('./feature/todo-list/todo.module').then(m => m.TodoModule)
+    path: 'task-manager',
+    loadChildren: () => import('./feature/task-manager/task-manager.module').then(m => m.TaskManagerModule)
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/todo'
+    redirectTo: '/task-manager'
   }
 ];
 

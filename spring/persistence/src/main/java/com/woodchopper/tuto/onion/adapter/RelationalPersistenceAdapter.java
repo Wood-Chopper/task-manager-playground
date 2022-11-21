@@ -1,14 +1,14 @@
 package com.woodchopper.tuto.onion.adapter;
 
 import com.woodchopper.tuto.onion.entity.ItemEntity;
-import com.woodchopper.tuto.onion.entity.TodoListEntity;
+import com.woodchopper.tuto.onion.entity.TaskListEntity;
 import com.woodchopper.tuto.onion.exception.ListNotFoundException;
 import com.woodchopper.tuto.onion.gateway.PersistenceGateway;
 import com.woodchopper.tuto.onion.mapper.EntityMapper;
 import com.woodchopper.tuto.onion.model.Item;
-import com.woodchopper.tuto.onion.model.TodoList;
+import com.woodchopper.tuto.onion.model.TaskListList;
 import com.woodchopper.tuto.onion.repository.ItemRepository;
-import com.woodchopper.tuto.onion.repository.TodoListRepository;
+import com.woodchopper.tuto.onion.repository.TaskListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,35 +19,35 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RelationalPersistenceAdapter implements PersistenceGateway {
 
-    private final TodoListRepository todoListRepository;
+    private final TaskListRepository taskListRepository;
     private final ItemRepository itemRepository;
     private final EntityMapper entityMapper = EntityMapper.INSTANCE;
 
     @Override
-    public List<TodoList> getLists() {
-        List<TodoListEntity> lists = todoListRepository.findAll();
+    public List<TaskListList> getLists() {
+        List<TaskListEntity> lists = taskListRepository.findAll();
         return entityMapper.toModel(lists);
     }
 
     @Override
-    public TodoList saveList(TodoList todoList) {
-        TodoListEntity todoListEntity = entityMapper.toEntity(todoList);
-        TodoListEntity savedTodoListEntity = todoListRepository.save(todoListEntity);
-        return entityMapper.toModel(savedTodoListEntity);
+    public TaskListList saveList(TaskListList taskListList) {
+        TaskListEntity taskListEntity = entityMapper.toEntity(taskListList);
+        TaskListEntity savedTaskListEntity = taskListRepository.save(taskListEntity);
+        return entityMapper.toModel(savedTaskListEntity);
     }
 
     @Override
-    public Optional<TodoList> getList(Long id) {
-        Optional<TodoListEntity> optionalTodoListEntity = todoListRepository.findById(id);
-        return optionalTodoListEntity.map(entityMapper::toModel);
+    public Optional<TaskListList> getList(Long id) {
+        Optional<TaskListEntity> optionalTaskListEntity = taskListRepository.findById(id);
+        return optionalTaskListEntity.map(entityMapper::toModel);
     }
 
     @Override
     public Item addItem(Long id, Item item) {
         ItemEntity itemEntity = entityMapper.toEntity(item);
 
-        TodoListEntity todoListEntity = todoListRepository.findById(id).orElseThrow(ListNotFoundException::new);
-        itemEntity.setTodoListEntity(todoListEntity);
+        TaskListEntity taskListEntity = taskListRepository.findById(id).orElseThrow(ListNotFoundException::new);
+        itemEntity.setTaskList(taskListEntity);
 
         ItemEntity savedItemEntity = itemRepository.save(itemEntity);
         return entityMapper.toModel(savedItemEntity);

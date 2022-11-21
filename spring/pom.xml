@@ -16,10 +16,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.woodchopper.tuto.onion</groupId>
-    <artifactId>todo-list-base</artifactId>
+    <artifactId>task-manager-base</artifactId>
     <version>${revision}</version>
-    <name>todo-list-base</name>
-    <description>A todo list micro-service in onion architecture</description>
+    <name>task-manager-base</name>
+    <description>A task manager micro-service in onion architecture</description>
     <properties>
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>

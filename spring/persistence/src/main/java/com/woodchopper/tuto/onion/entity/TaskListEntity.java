@@ -17,18 +17,18 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "TODOLIST")
+@Table(name = "TASKLIST")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TodoListEntity {
+public class TaskListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "todoListEntity")
+    @OneToMany(mappedBy = "taskList")
     @OrderBy("order")
     List<ItemEntity> items;
 

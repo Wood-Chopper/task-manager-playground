@@ -3,7 +3,7 @@ package com.woodchopper.tuto.onion.service;
 import com.woodchopper.tuto.onion.exception.ListNotFoundException;
 import com.woodchopper.tuto.onion.gateway.PersistenceGateway;
 import com.woodchopper.tuto.onion.model.Item;
-import com.woodchopper.tuto.onion.model.TodoList;
+import com.woodchopper.tuto.onion.model.TaskListList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,20 +13,20 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TodoListService {
+public class TaskListService {
 
     private final PersistenceGateway persistenceGateway;
 
-    public List<TodoList> getLists() {
+    public List<TaskListList> getLists() {
         return persistenceGateway.getLists();
     }
 
-    public TodoList addList(TodoList todoList) {
-        todoList.setCreationDate(LocalDateTime.now());
-        return persistenceGateway.saveList(todoList);
+    public TaskListList addList(TaskListList taskListList) {
+        taskListList.setCreationDate(LocalDateTime.now());
+        return persistenceGateway.saveList(taskListList);
     }
 
-    public TodoList getList(Long id) {
+    public TaskListList getList(Long id) {
         return persistenceGateway.getList(id).orElseThrow(ListNotFoundException::new);
     }
 
@@ -36,18 +36,18 @@ public class TodoListService {
     }
 
     public List<Item> sortByName(Long id) {
-        TodoList todoList = persistenceGateway.getList(id).orElseThrow(ListNotFoundException::new);
+        TaskListList taskListList = persistenceGateway.getList(id).orElseThrow(ListNotFoundException::new);
         //Sort
-        todoList.getItems().sort(Comparator.comparing(Item::getName));
+        taskListList.getItems().sort(Comparator.comparing(Item::getName));
         //Set order
         long index = 0;
-        for (Item item : todoList.getItems()) {
+        for (Item item : taskListList.getItems()) {
             item.setOrder(index);
             index++;
         }
         //Save in persistence
-        persistenceGateway.saveList(todoList);
+        persistenceGateway.saveList(taskListList);
 
-        return todoList.getItems();
+        return taskListList.getItems();
     }
 }

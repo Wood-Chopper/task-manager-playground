@@ -25,7 +25,7 @@ public class ItemEntity {
     private Long id;
 
     @ManyToOne
-    private TodoListEntity todoListEntity;
+    private TaskListEntity taskList;
 
     private String name;
     private String creationDate;

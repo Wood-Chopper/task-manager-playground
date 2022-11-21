@@ -4,7 +4,7 @@ export type Item = {
   creationDate: Date
 }
 
-export type TodoList = {
+export type TaskList = {
   id: number
   name: string
   items: Item[]

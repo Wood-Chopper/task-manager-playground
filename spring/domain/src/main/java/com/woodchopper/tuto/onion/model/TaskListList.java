@@ -1,18 +1,18 @@
-package com.woodchopper.tuto.onion.dto;
+package com.woodchopper.tuto.onion.model;
 
-import com.woodchopper.tuto.onion.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @Builder
-public class TodoListDto {
+public class TaskListList {
     private Long id;
     private String name;
     private List<Item> items;
-    private String creationDate;
+    private LocalDateTime creationDate;
 }

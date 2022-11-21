@@ -1,9 +1,9 @@
 package com.woodchopper.tuto.onion.mapper;
 
 import com.woodchopper.tuto.onion.entity.ItemEntity;
-import com.woodchopper.tuto.onion.entity.TodoListEntity;
+import com.woodchopper.tuto.onion.entity.TaskListEntity;
 import com.woodchopper.tuto.onion.model.Item;
-import com.woodchopper.tuto.onion.model.TodoList;
+import com.woodchopper.tuto.onion.model.TaskListList;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,11 +13,11 @@ import java.util.List;
 public interface EntityMapper {
     EntityMapper INSTANCE = Mappers.getMapper(EntityMapper.class);
 
-    TodoListEntity toEntity(TodoList todoList);
+    TaskListEntity toEntity(TaskListList taskListList);
 
-    TodoList toModel(TodoListEntity todoListEntity);
+    TaskListList toModel(TaskListEntity taskListEntity);
 
-    List<TodoList> toModel(List<TodoListEntity> todoListEntities);
+    List<TaskListList> toModel(List<TaskListEntity> taskListEntities);
 
     ItemEntity toEntity(Item item);
 

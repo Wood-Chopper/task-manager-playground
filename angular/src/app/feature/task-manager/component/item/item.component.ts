@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Item} from "../../model/todo-list";
+import {Item} from "../../model/task-list";
 
 @Component({
   selector: 'app-item',
