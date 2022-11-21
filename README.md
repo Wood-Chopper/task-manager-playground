@@ -12,4 +12,4 @@ The `angular` folder contains the frontend application. The architecture enforce
 
 The `spring` folder contains the backend application. It uses an implementation of the Onion Architecture.
 
-Some other technologies may be added to this repos. I am considering adding a .NET version of the backend for learning purpose.
+Some other technologies may be added to this repo. I am considering adding a .NET version of the backend for learning purpose.
