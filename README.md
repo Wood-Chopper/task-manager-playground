@@ -1,4 +1,4 @@
-# Task List Sandbox
+# Task Manager Playground
 
 This project is the starting point of any dev or article that needs a demonstration. This repo aims to be a ready-to-use project to test any development, create tutorials, do researches etc.
 
