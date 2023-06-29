@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import {ListComponent} from "./component/list/list.component";
-import {RouterModule, Routes} from "@angular/router";
-import {ListIdResolver} from "./resolver/list-id.resolver";
-import {ListPickerComponent} from "./component/list-picker/list-picker.component";
+import { ListComponent } from "./component/list/list.component";
+import { RouterModule, Routes } from "@angular/router";
+import { ListIdResolver } from "./resolver/list-id.resolver";
+import { ListPickerComponent } from "./component/list-picker/list-picker.component";
 
 const routes: Routes = [
   {

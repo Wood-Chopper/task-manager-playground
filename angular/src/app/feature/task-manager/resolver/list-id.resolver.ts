@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
-import {Observable} from 'rxjs';
-import {TaskList} from "../model/task-list";
-import {TaskManagerClient} from "../client/task-manager.client";
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

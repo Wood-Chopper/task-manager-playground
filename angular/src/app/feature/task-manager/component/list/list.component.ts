@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
-import {Item, TaskList} from "../../model/task-list";
-import {TaskManagerService} from "../../service/task-manager.service";
+import { Component } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { TaskList } from "../../model/task-list";
+import { TaskManagerService } from "../../service/task-manager.service";
 
 @Component({
   selector: 'app-list',

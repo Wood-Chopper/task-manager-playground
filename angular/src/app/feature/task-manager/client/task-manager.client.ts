@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Item, TaskList} from "../model/task-list";
-import {DateMapping, Mapping} from "@woodchopper/property-mapper";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Item, TaskList } from "../model/task-list";
+import { DateMapping, Mapping } from "@woodchopper/property-mapper";
 
 @Injectable({
   providedIn: 'root'

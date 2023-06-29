@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {TaskManagerClient} from "../client/task-manager.client";
-import {TaskManagerStore} from "../store/task-manager.store";
-import {Item} from "../model/task-list";
+import { TaskManagerClient } from "../client/task-manager.client";
+import { TaskManagerStore } from "../store/task-manager.store";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {TaskList} from "../../model/task-list";
-import {TaskManagerService} from "../../service/task-manager.service";
+import { Observable } from "rxjs";
+import { TaskList } from "../../model/task-list";
+import { TaskManagerService } from "../../service/task-manager.service";
 
 @Component({
   selector: 'app-list-picker',

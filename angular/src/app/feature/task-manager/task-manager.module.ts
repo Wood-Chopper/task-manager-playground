@@ -1,14 +1,14 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TaskListFeatureComponent} from "./component/task-list.component";
-import {ListComponent} from "./component/list/list.component";
-import {ItemComponent} from "./component/item/item.component";
-import {TaskManagerRoutingModule} from "./task-manager-routing.module";
+import { TaskListFeatureComponent } from "./component/task-list.component";
+import { ListComponent } from "./component/list/list.component";
+import { ItemComponent } from "./component/item/item.component";
+import { TaskManagerRoutingModule } from "./task-manager-routing.module";
 import { ListPickerComponent } from './component/list-picker/list-picker.component';
-import {TaskManagerStore} from "./store/task-manager.store";
-import {TaskManagerClient} from "./client/task-manager.client";
-import {Observable, tap} from "rxjs";
-import {FormsModule} from "@angular/forms";
+import { TaskManagerStore } from "./store/task-manager.store";
+import { TaskManagerClient } from "./client/task-manager.client";
+import { Observable, tap } from "rxjs";
+import { FormsModule } from "@angular/forms";
 
 function initializeAppFactory(client: TaskManagerClient, store: TaskManagerStore): () => Observable<any> {
   return () => client.getAllList().pipe(
